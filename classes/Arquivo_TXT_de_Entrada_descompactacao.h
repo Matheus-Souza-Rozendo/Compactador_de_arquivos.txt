@@ -6,7 +6,6 @@
 #include "bitwise.h"
 #include "Arquivo_TXT_de_Saida_descompactacao.h"
 
-
 class Arquivo_TXT_de_Entrada_descompactacao : protected Arquivo_TXT_de_Entrada
 {
     public:
@@ -22,7 +21,7 @@ class Arquivo_TXT_de_Entrada_descompactacao : protected Arquivo_TXT_de_Entrada
         void ler_arvore_arquivo(Arvore *arv, string linha_arvore); //gerar arvore a partir da lida no arquivo
         void gera_codificacao(FILE *arq); //gera a string codificacao
         void gera_descodificacao(); //percorre a aarvore e gera a string decodificacao
-        string get_linha(FILE *arq); // funçõ analaloga a get_line() porem para arquivos FILE
+        string get_linha(FILE *arq); // funÃ§Ãµ analaloga a get_line() porem para arquivos FILE
         int posicao=0;
 };
 
@@ -103,8 +102,8 @@ void Arquivo_TXT_de_Entrada_descompactacao::gera_codificacao(FILE *arq){
     unsigned char c = fgetc(arq);
     int i=1;
     while(!feof(arq)){
-        if(int(c)>127){
-            c=c-127;
+        if(int(c)>128){
+            c=c-128;
         }
         codificacao+=toBinary(c);
         c = fgetc(arq);
