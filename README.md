@@ -38,7 +38,7 @@ Basta baixar o repositório e compilar o arquivo zip.cpp na versão mais recente
 * Apenas digite o caminho para o arquivo que será compactado que o programa criará um arquivo de saida do tipo `.compact` na `pasta compactados`. Esta pasta é criada na pasta onde o usuario salvou o programa.
 ![](https://raw.githubusercontent.com/Matheus-Souza-Rozendo/Compactador_de_arquivos.txt/main/documenta%C3%A7%C3%A3o/prints/print_2.png)
 #### Descompactando Arquivos .compact
-* Apenas digite o caminho para o arquivo que será compactado que o programa criará um arquivo de saida do tipo `.txt` na `pasta descompactados`. Esta pasta é criada na pasta onde o usuario salvou o programa.
+* Apenas digite o caminho para o arquivo que será descompactado que o programa criará um arquivo de saida do tipo `.txt` na `pasta descompactados`. Esta pasta é criada na pasta onde o usuario salvou o programa.
 ![](https://raw.githubusercontent.com/Matheus-Souza-Rozendo/Compactador_de_arquivos.txt/main/documenta%C3%A7%C3%A3o/prints/print_3.png)
 
 
@@ -46,7 +46,6 @@ Basta baixar o repositório e compilar o arquivo zip.cpp na versão mais recente
 Matheus Souza Rozendo –– matheusrozendo234674@gmail.com
 
 Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
-
 
 
 
