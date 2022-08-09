@@ -6,6 +6,7 @@
 #include "Caractere.h"
 #include "Arquivo_TXT_de_Saida_compactacao.h"
 
+
 class Arquivo_TXT_de_Entrada_compactacao : protected Arquivo_TXT_de_Entrada
 {
     public:
@@ -19,17 +20,16 @@ class Arquivo_TXT_de_Entrada_compactacao : protected Arquivo_TXT_de_Entrada
         vector <Caractere> tabela_de_frequencia; // tabela de frequencia utilizada no algoritmo de huffman
         Arvore arvore_de_huffman; // Arvore binaria usada no algoritmo de huffman
         vector <Arvore> lista_de_prioridade; // vetor que contem a lista de prioridades usada no algoritmo de huffman
-        map <int,string> dicionario; // map que associa o caractere a sua representação binaria
-        string codificacao; // sequencia de bits que representa o arquivo de texto. Essa sequencia é gerada a partir do código de huffman
-        int pesquisa_linear_elementos_tabela_frequencia(int c); // metodo que realiza a busca na tabela de frequencia por um determinado caractere e retorna sua posição
-        void ordenar(); // ordena a tabela de frequencia em ordem crescente usando o algoritmo de ordenação por seleção
+        map <int,string> dicionario; // map que associa o caractere a sua representaÃ§Ã£o binaria
+        string codificacao; // sequencia de bits que representa o arquivo de texto. Essa sequencia Ã© gerada a partir do cÃ³digo de huffman
+        int pesquisa_linear_elementos_tabela_frequencia(int c); // metodo que realiza a busca na tabela de frequencia por um determinado caractere e retorna sua posiÃ§Ã£o
+        void ordenar(); // ordena a tabela de frequencia em ordem crescente usando o algoritmo de ordenaÃ§Ã£o por seleÃ§Ã£o
         void gerar_tabela_frequencia(); // metodo que gera a tabela de frequencia
         void cria_lista_de_prioridades(); // cria a lista de prioridade do algoritmo de huffman
         void gerar_arvore_de_huffman(); // gera uma arvore de huffman
-        int acha_posicao(int n); // acha aposição em que um nó intermediario deve ser inserido na lista de prioridade
-        void gerar_dicionario(Arvore *arv,string str); // gera um dicionario, asociando um simbolo a sua representação binaria
+        int acha_posicao(int n); // acha aposiÃ§Ã£o em que um nÃ³ intermediario deve ser inserido na lista de prioridade
+        void gerar_dicionario(Arvore *arv,string str); // gera um dicionario, asociando um simbolo a sua representaÃ§Ã£o binaria
         void codifica(); // gera a string codificacao
-
 };
 
 Arquivo_TXT_de_Entrada_compactacao::Arquivo_TXT_de_Entrada_compactacao(){};
@@ -56,11 +56,11 @@ void Arquivo_TXT_de_Entrada_compactacao::ordenar(){
 			x = tabela_de_frequencia[indice + 1];
         	i = indice;
             while(1){
-            	if(x.ocorrencias < tabela_de_frequencia[i].ocorrencias){//verificando se o elemento ja ordenado é menor que o x
+            	if(x.ocorrencias < tabela_de_frequencia[i].ocorrencias){//verificando se o elemento ja ordenado Ã© menor que o x
             		tabela_de_frequencia[i+1] = tabela_de_frequencia[i];
             		tabela_de_frequencia[i] = x;
 				}
-				if(x.ocorrencias > tabela_de_frequencia[i].ocorrencias || i==0){ //verificando se é maior
+				if(x.ocorrencias > tabela_de_frequencia[i].ocorrencias || i==0){ //verificando se Ã© maior
 					break;
 				}
 				i=i-1;
@@ -154,7 +154,7 @@ int Arquivo_TXT_de_Entrada_compactacao::acha_posicao(int n){
             return i;
         }
     }
-    return lista_de_prioridade.size()-1;
+    return lista_de_prioridade.size();
 }
 
 void Arquivo_TXT_de_Entrada_compactacao::codifica(){
@@ -168,4 +168,5 @@ void Arquivo_TXT_de_Entrada_compactacao::codifica(){
     }
     fclose(aux);
 }
+
 #endif // ARQUIVO_TXT_DE_ENTRADA_COMPACTACAO_H
