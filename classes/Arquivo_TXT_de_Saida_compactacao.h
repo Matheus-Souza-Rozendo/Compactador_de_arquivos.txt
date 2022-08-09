@@ -52,8 +52,8 @@ void Arquivo_TXT_de_Saida_compactacao::escrever_arquivo(string c,string n,Arvore
                 c.erase(0,1);
                 i++;
             }
-            if(int(byte)<32){
-                byte = byte + 127;
+            if(int(byte)<=32){
+                byte = byte + 128;
             }
             *aux << byte;
         }
