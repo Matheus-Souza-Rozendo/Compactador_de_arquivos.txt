@@ -41,6 +41,14 @@ Basta baixar o repositório e compilar o arquivo zip.cpp na versão mais recente
 * Apenas digite o caminho para o arquivo que será descompactado que o programa criará um arquivo de saida do tipo `.txt` na `pasta descompactados`. Esta pasta é criada na pasta onde o usuario salvou o programa.
 ![](https://raw.githubusercontent.com/Matheus-Souza-Rozendo/Compactador_de_arquivos.txt/main/documenta%C3%A7%C3%A3o/prints/print_3.png)
 
+## Testes
+
+| Texto                                 | Tamanho original | Tamanho compactado | Taxa de compactação|
+| --------------------------------------| ---------------- |--------------------|--------------------|
+| Martin Luther King, Jr.I Have a Dream | 9.04 kb          | 6.66 kb            |aproximadamente 26% |
+| We shall fight on the beaches         | 20,8 kb          | 14,6 kb            |aproximadamente 29% |
+| Lincoln's Gettysburg Address          | 1,46 kb          | 1,30 kb            |aproximadamente 10% |
+| Book 1 Genesis                        | 196 kb           | 139 kb             |aproximadamente 29% |
 
 ## Contato
 Matheus Souza Rozendo –– matheusrozendo234674@gmail.com
