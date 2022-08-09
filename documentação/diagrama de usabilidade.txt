@@ -1,0 +1,11 @@
+[Usuário]-(compactar arquivo)
+[Usuário]-(descompactar arquivo)
+(compactar arquivo)>(ler arquivo)
+(compactar arquivo)>(escrever arquivo)
+(descompactar arquivo)>(ler arquivo)
+(descompactar arquivo)>(escrever arquivo)
+(ler arquivo)<(arquivo.txt)
+(escrever arquivo)<(arquivo.txt)
+(ler arquivo)<(arquivo.compact)
+(escrever arquivo)<(arquivo.compact)
+

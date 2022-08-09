@@ -1,0 +1,88 @@
+classDiagram
+class Caractere{
+    +int simbolo
+    +int ocorrencias
+}
+
+class Arvore{
+    +Caractere caractere;
+    +*Arvore esquerda; 
+    +*Arvore direita;
+}
+
+Arvore*--Caractere
+Arquivo_TXT_de_Entrada_compactacao*--Caractere
+Arquivo_TXT_de_Entrada_compactacao*--Arvore
+Arquivo_TXT_de_Entrada_descompactacao*--Arvore
+Arquivo_TXT_de_Saida_compactacao*--Arvore
+
+class Arquivo{
+    -string caminho;
+    -string nome;
+    +Set_caminho() void
+    -Set_nome() void
+}
+
+class Arquivo_TXT_de_Entrada{
+    -arquivo *FILE
+    +Set_arquivo(string caminho) bool
+    +Get_arquivo() FILE
+}
+
+class Arquivo_TXT_de_Saida{
+    -string pasta
+    -ofstream arquivo
+    +Set_arquivo(string nome, string pasta, string extensao) bool
+    +Get_arquivo() ofstream
+    -cria_pasta() void
+}
+
+class Arquivo_TXT_de_Entrada_compactacao{
+    -vector ~Caractere~ tabela_de_frequencia
+    -Arvore arvore_de_huffman
+    -vector ~Arvore~ lista_de_prioridade
+    -map ~int,string~ dicionario
+    -string codificacao
+    +Set_arquivo_compactacao(string caminho) bool
+    +compactar(); bool
+    -pesquisa_linear_elementos_tabela_frequencia(int caractere) int
+    -ordenar() void
+    -gerar_tabela_frequencia() void
+    -cria_lista_de_prioridades() void
+    -gerar_arvore_de_huffman() void
+    -acha_posicao(int ocorrencias) int 
+    gerar_dicionario(Arvore *arv,string str) void
+    codifica() void
+}
+
+class Arquivo_TXT_de_Entrada_descompactacao{
+    -Arvore arvore_de_huffman
+    -string codificacao
+    -string descodificacao
+    -int tamanho
+    -int posicao
+    +descompactar() void
+    +Set_arquivo_descompactacao(string caminho)
+    -ler_arvore_arquivo(Arvore *arvore, string linha_arvore) void
+    -gera_codificacao(FILE *arquivo)
+    -gera_descodificacao() void
+    -get_linha(FILE *arquivo) string
+    
+}
+
+class Arquivo_TXT_de_Saida_compactacao{
+    -Arvore arvore_de_huffman
+    +escreve_arquivo(string codificacao, string nome, Arvore *arvore, string pasta ) void
+    -escrever_arvore_arquivo(ofstream *arquivo, Arvore *arvore) void
+}
+
+class Arquivo_TXT_de_Saida_descompactacao{
+   +escrever_arquivo(string codificacao, string nome, string pasta) void
+}
+
+Arquivo <|-- Arquivo_TXT_de_Entrada
+Arquivo <|-- Arquivo_TXT_de_Saida
+Arquivo_TXT_de_Entrada <|-- Arquivo_TXT_de_Entrada_compactacao
+Arquivo_TXT_de_Entrada <|-- Arquivo_TXT_de_Entrada_descompactacao
+Arquivo_TXT_de_Saida <|-- Arquivo_TXT_de_Saida_compactacao
+Arquivo_TXT_de_Saida <|-- Arquivo_TXT_de_Saida_descompactacao
