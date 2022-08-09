@@ -26,7 +26,7 @@ O resultado do algoritmo de Huffman pode ser visto como uma tabela de códigos d
 
 
 ## Instalação
-Basta baixar o repositório e compilar o arquivo zip.txt na versão mais recente do C++
+Basta baixar o repositório e compilar o arquivo zip.cpp na versão mais recente do C++
 
 ## Como usar
 * execute o programa
