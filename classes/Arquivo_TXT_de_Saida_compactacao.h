@@ -42,6 +42,7 @@ void Arquivo_TXT_de_Saida_compactacao::escrever_arquivo(string c,string n,Arvore
         *aux << to_string(c.size());
         *aux << '\n';
         int j=0;
+        string escrita;
         while(c.size()!=0){
             unsigned char byte=0;
             int i=0;
@@ -55,8 +56,9 @@ void Arquivo_TXT_de_Saida_compactacao::escrever_arquivo(string c,string n,Arvore
             if(int(byte)<=32){
                 byte = byte + 128;
             }
-            *aux << byte;
+            escrita.push_back(byte);
         }
+        *aux << escrita;
     }else{
         cout << "falha ao criar arquivo de saida";
     }
