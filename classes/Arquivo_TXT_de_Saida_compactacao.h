@@ -5,6 +5,7 @@
 #include <bits/stdc++.h>
 #include "Arvore.h"
 #include "bitwise.h"
+#include "leitura_dados.h"
 
 class Arquivo_TXT_de_Saida_compactacao : protected Arquivo_TXT_de_Saida{
     public:
@@ -38,19 +39,20 @@ void Arquivo_TXT_de_Saida_compactacao::escrever_arquivo(string c,string n,Arvore
         arvore_de_huffman=*arv;
         ofstream *aux = Get_arquivo();
         escrever_arvore_arquivo(aux,&arvore_de_huffman);
+        cout << "arvore no arquivo\n";
         *aux<<'\n';
         *aux << to_string(c.size());
         *aux << '\n';
         int j=0;
         string escrita;
-        while(c.size()!=0){
+        while(j<c.size()){
             unsigned char byte=0;
             int i=0;
-            while(c.size()!=0 && i<7){
-                if(c[0]=='1'){
+            while(j<c.size() && i<7){
+                if(c[j]=='1'){
                     byte = ativa_bit_char(6-i,byte);
                 }
-                c.erase(0,1);
+                j++;
                 i++;
             }
             if(int(byte)<=32){
