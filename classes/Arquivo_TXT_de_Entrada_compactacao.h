@@ -7,11 +7,11 @@
 #include "Arquivo_TXT_de_Saida_compactacao.h"
 
 
-class Arquivo_TXT_de_Entrada_compactacao : protected Arquivo_TXT_de_Entrada
+class Arquivo_TXT_de_Entrada_compactacao : public Arquivo_TXT_de_Entrada
 {
     public:
         Arquivo_TXT_de_Entrada_compactacao();
-        bool Set_arquivo_compactacao(string c);// set do arquivo de entrada, retorna true se o arquivo for aberto
+        bool Set_arquivo_compactacao(string caminho);// set do arquivo de entrada, retorna true se o arquivo for aberto
         void compactar(); // compacta o arquivo usando o algoritmo de huffman e retorna a string codificacao
         Arvore *Get_Arvore_huffman(); // retorna a arvore de huffman
 
@@ -22,7 +22,7 @@ class Arquivo_TXT_de_Entrada_compactacao : protected Arquivo_TXT_de_Entrada
         vector <Arvore> lista_de_prioridade; // vetor que contem a lista de prioridades usada no algoritmo de huffman
         map <int,string> dicionario; // map que associa o caractere a sua representação binaria
         string codificacao; // sequencia de bits que representa o arquivo de texto. Essa sequencia é gerada a partir do código de huffman
-        int pesquisa_linear_elementos_tabela_frequencia(int c); // metodo que realiza a busca na tabela de frequencia por um determinado caractere e retorna sua posição
+        int pesquisa_linear_elementos_tabela_frequencia(int caractere); // metodo que realiza a busca na tabela de frequencia por um determinado caractere e retorna sua posição
         void ordenar(); // ordena a tabela de frequencia em ordem crescente usando o algoritmo de ordenação por seleção
         void gerar_tabela_frequencia(); // metodo que gera a tabela de frequencia
         void cria_lista_de_prioridades(); // cria a lista de prioridade do algoritmo de huffman
@@ -35,13 +35,13 @@ class Arquivo_TXT_de_Entrada_compactacao : protected Arquivo_TXT_de_Entrada
 Arquivo_TXT_de_Entrada_compactacao::Arquivo_TXT_de_Entrada_compactacao(){};
 
 
-bool Arquivo_TXT_de_Entrada_compactacao::Set_arquivo_compactacao(string c){
-    return Set_arquivo(c);
+bool Arquivo_TXT_de_Entrada_compactacao::Set_arquivo_compactacao(string caminho){
+    return Set_arquivo(caminho);
 }
 
-int Arquivo_TXT_de_Entrada_compactacao::pesquisa_linear_elementos_tabela_frequencia(int c){
+int Arquivo_TXT_de_Entrada_compactacao::pesquisa_linear_elementos_tabela_frequencia(int caractere){
     for(int i=0;i<tabela_de_frequencia.size();i++){
-        if(tabela_de_frequencia[i].simbolo==c){
+        if(tabela_de_frequencia[i].simbolo==caractere){
             return i;
         }
     }
@@ -101,9 +101,9 @@ void Arquivo_TXT_de_Entrada_compactacao::compactar(){
 }
 
 void Arquivo_TXT_de_Entrada_compactacao::cria_lista_de_prioridades(){
-    for(int i=0;i<tabela_de_frequencia.size();i++){
+    for(auto i:tabela_de_frequencia){
         Arvore aux;
-        aux.caractere=tabela_de_frequencia[i];
+        aux.caractere=i;
         lista_de_prioridade.push_back(aux);
     }
 };
