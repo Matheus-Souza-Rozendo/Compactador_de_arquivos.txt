@@ -4,10 +4,10 @@
 #include "Arquivo.h"
 
 
-class Arquivo_TXT_de_Entrada : protected Arquivo{
+class Arquivo_TXT_de_Entrada : public Arquivo{
     public:
         Arquivo_TXT_de_Entrada();
-        bool Set_arquivo(string c);
+        bool Set_arquivo(string caminho);
         FILE *Get_arquivo();
     private:
         FILE *arquivo;
@@ -15,15 +15,11 @@ class Arquivo_TXT_de_Entrada : protected Arquivo{
 
 Arquivo_TXT_de_Entrada::Arquivo_TXT_de_Entrada(){};
 
-bool Arquivo_TXT_de_Entrada::Set_arquivo(string c){
-    Set_Caminho(c);
-    char *aux = &c[0];
+bool Arquivo_TXT_de_Entrada::Set_arquivo(string caminho){
+    Set_Caminho(caminho);
+    char *aux = &caminho[0];
     arquivo = fopen(aux,"r");
-    if(arquivo!=NULL){
-        return true;
-    }else{
-        return false;
-    }
+    return (arquivo!=NULL)?true : false;
 }
 
 FILE *Arquivo_TXT_de_Entrada::Get_arquivo(){
