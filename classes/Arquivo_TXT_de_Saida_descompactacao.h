@@ -3,20 +3,19 @@
 
 #include "Arquivo_TXT_de_Saida.h"
 
-
-class Arquivo_TXT_de_Saida_descompactacao : protected Arquivo_TXT_de_Saida
+class Arquivo_TXT_de_Saida_descompactacao : public Arquivo_TXT_de_Saida
 {
     public:
         Arquivo_TXT_de_Saida_descompactacao();
-        void escrever_arquivo(string c, string n, string p);
+        void escrever_arquivo(string conteudo, string nome, string pasta);
 };
 
 Arquivo_TXT_de_Saida_descompactacao::Arquivo_TXT_de_Saida_descompactacao(){};
 
-void Arquivo_TXT_de_Saida_descompactacao::escrever_arquivo(string c, string n, string p){
-    if(cria_arquivo(n,p,".txt")){
+void Arquivo_TXT_de_Saida_descompactacao::escrever_arquivo(string conteudo, string nome, string pasta){
+    if(cria_arquivo(nome,pasta,".txt")){
         ofstream *aux = Get_arquivo();
-        *aux << c;
+        *aux << conteudo;
     }else{
         cout << "\n Falha ao criar arquivo de saida\n";
     }
