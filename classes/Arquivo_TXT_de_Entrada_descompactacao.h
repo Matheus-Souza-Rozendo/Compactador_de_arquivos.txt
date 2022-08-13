@@ -11,7 +11,7 @@ class Arquivo_TXT_de_Entrada_descompactacao : protected Arquivo_TXT_de_Entrada
     public:
         Arquivo_TXT_de_Entrada_descompactacao();
         void descompactar();// descompacta o arquivo passado como parametro
-        bool Set_arquivo_descompactacao(string c); // set do arquivo de entrada
+        bool Set_arquivo_descompactacao(string caminho); // set do arquivo de entrada
 
     private:
         Arvore arvore_de_huffman; // arvore de huffman deve ser lida do arquivo para que seja possivel a descompactacao
@@ -27,8 +27,8 @@ class Arquivo_TXT_de_Entrada_descompactacao : protected Arquivo_TXT_de_Entrada
 
 Arquivo_TXT_de_Entrada_descompactacao::Arquivo_TXT_de_Entrada_descompactacao(){};
 
-bool Arquivo_TXT_de_Entrada_descompactacao::Set_arquivo_descompactacao(string c){
-    return Set_arquivo(c);
+bool Arquivo_TXT_de_Entrada_descompactacao::Set_arquivo_descompactacao(string caminho){
+    return Set_arquivo(caminho);
 }
 
 void Arquivo_TXT_de_Entrada_descompactacao::descompactar(){
@@ -112,8 +112,7 @@ void Arquivo_TXT_de_Entrada_descompactacao::gera_codificacao(FILE *arq){
 
 void Arquivo_TXT_de_Entrada_descompactacao::gera_descodificacao(){
     Arvore aux = arvore_de_huffman;
-    int i=0;
-    while(i<tamanho){
+    for(int i=0;i<tamanho;i++){
         if(codificacao[i]=='0'){
             aux=*aux.esquerda;
         }else{
@@ -124,7 +123,6 @@ void Arquivo_TXT_de_Entrada_descompactacao::gera_descodificacao(){
             descodificacao.push_back(c);
             aux=arvore_de_huffman;
         }
-        i++;
     }
 };
 #endif // ARQUIVO_TXT_DE_ENTRADA_DESCOMPACTACAO_H
