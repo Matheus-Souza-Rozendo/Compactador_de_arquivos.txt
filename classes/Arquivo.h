@@ -9,7 +9,7 @@ using namespace std;
 class Arquivo{
     public:
         Arquivo();
-        void Set_Caminho(string cami);
+        void Set_Caminho(string caminho);
         string Get_nome();
         string Get_caminho();
     private:
@@ -21,8 +21,8 @@ class Arquivo{
 
 Arquivo::Arquivo(){};
 
-void Arquivo::Set_Caminho(string cami){
-    caminho=cami;
+void Arquivo::Set_Caminho(string caminho){
+    this->caminho=caminho;
     Set_nome();
 };
 
@@ -32,13 +32,13 @@ string Arquivo::Get_nome(){
 
 void Arquivo::Set_nome(){
     string aux = caminho;
-    if(busca_caractere_string(aux,'/')==-1){
-         nome = aux.substr(0,busca_caractere_string(aux,'.'));
+    if(aux.find("/")==string::npos){
+         nome = aux.substr(0,aux.find("."));
     }else{
-        while(busca_caractere_string(aux,'/')!=-1){
-            aux.erase(0,busca_caractere_string(aux,'/')+1);
+        while(aux.find("/")!=string::npos){
+            aux.erase(0,caminho.find('/')+1);
         }
-        nome = aux.substr(0,busca_caractere_string(aux,'.'));
+        nome = aux.substr(0,aux.find("."));
     }
 };
 
